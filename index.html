@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meine kleine Website</title>
+  <style>
+    /* Einfaches, modernes Design */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 24px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+      padding: 48px 40px;
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+      transition: transform 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 8px;
+    }
+
+    .emoji {
+      font-size: 4rem;
+      display: block;
+      margin-bottom: 16px;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      color: #4a4a5a;
+      margin-bottom: 24px;
+      font-weight: 300;
+    }
+
+    p {
+      color: #555;
+      line-height: 1.7;
+      margin-bottom: 20px;
+      font-size: 1.05rem;
+    }
+
+    .status {
+      display: inline-block;
+      background: #e8f5e9;
+      color: #2e7d32;
+      padding: 6px 20px;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      margin-bottom: 28px;
+      border: 1px solid #a5d6a7;
+    }
+
+    .footer {
+      border-top: 1px solid #eee;
+      padding-top: 20px;
+      margin-top: 8px;
+      font-size: 0.9rem;
+      color: #888;
+    }
+
+    .footer a {
+      color: #1a1a2e;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 2px solid #c3cfe2;
+      transition: border-color 0.2s;
+    }
+
+    .footer a:hover {
+      border-color: #1a1a2e;
+    }
+
+    /* Für kleine Bildschirme */
+    @media (max-width: 480px) {
+      .card {
+        padding: 32px 20px;
+      }
+      h1 {
+        font-size: 2.2rem;
+      }
+      .emoji {
+        font-size: 3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <!-- Emoji als kleines Highlight -->
+    <span class="emoji">🚀</span>
+
+    <h1>Hallo, Welt!</h1>
+    <p class="subtitle">Willkommen auf meiner ersten GitHub-Seite</p>
+
+    <div class="status">
+      ✅ Online &amp; bereit
+    </div>
+
+    <p>
+      Diese Seite wird direkt über <strong>GitHub Pages</strong> gehostet.<br>
+      Ändere einfach diese <code>index.html</code> und pushe sie –<br>
+      schon ist deine Website live!
+    </p>
+
+    <div class="footer">
+      ✨ Mit ❤️ erstellt &bull; 
+      <a href="https://github.com" target="_blank">Mein GitHub</a>
+    </div>
+  </div>
+
+</body>
+</html>
