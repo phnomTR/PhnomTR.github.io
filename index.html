@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Live Countdown</title>
+  <title>Yusuf ist ein Ei</title>
   <style>
-    /* Einfaches, modernes Design */
+    /* ─── Design ─── */
     * {
       margin: 0;
       padding: 0;
@@ -41,12 +41,17 @@
       transform: scale(1.01);
     }
 
+    /* ─── Hauptüberschrift ─── */
     h1 {
-      font-size: 1.9rem;
-      font-weight: 500;
-      letter-spacing: 0.5px;
-      margin-bottom: 6px;
-      color: #c8d6e5;
+      font-size: 3.2rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+      background: linear-gradient(135deg, #fde68a, #f59e0b);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 30px rgba(245, 158, 11, 0.2);
     }
 
     .sub {
@@ -118,8 +123,9 @@
 <body>
 
 <div class="card">
-  <h1>⏳ Countdown</h1>
-  <div class="sub">bis zum 1. Januar 2027</div>
+  <!-- 🔥 Neuer Text – genau wie gewünscht -->
+  <h1>🥚 Yusuf ist ein Ei</h1>
+  <div class="sub">⏳ Countdown bis zum 1. Januar 2027</div>
 
   <div id="countdown">
     <div class="time-box">
@@ -163,7 +169,6 @@
       const now = Date.now();
       let diff = targetDate - now;
 
-      // Wenn Countdown abgelaufen
       if (diff <= 0) {
         container.innerHTML = `<div class="finished">🎉 Countdown abgelaufen!</div>`;
         return;
@@ -186,9 +191,7 @@
       secondsEl.textContent = padZero(seconds);
     }
 
-    // Sofort ausführen
     updateCountdown();
-    // Alle 1000 ms aktualisieren
     setInterval(updateCountdown, 1000);
   })();
 </script>
