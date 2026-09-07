@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="PhnomTR - Portfolio für 3D-Modelling, Vehicle Physics und Web-Development. Engineering Digital Realities.">
+<meta name="description" content="PhnomTR - Portfolio for 3D Modelling, Vehicle Physics, and Web Development. Engineering Digital Realities.">
 <title>PhnomTR</title>
 <style>
 html {
@@ -47,6 +47,12 @@ nav {
     letter-spacing: -0.01em;
 }
 
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
 .nav-links {
     display: flex;
     gap: 32px;
@@ -61,6 +67,22 @@ nav {
 
 .nav-links a:hover {
     color: #fff;
+}
+
+.lang-select {
+    background: #121212;
+    color: #ededed;
+    border: 1px solid #262626;
+    border-radius: 6px;
+    padding: 6px 10px;
+    font-size: 0.85rem;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+}
+
+.lang-select:hover {
+    border-color: #525252;
 }
 
 header {
@@ -229,6 +251,12 @@ section {
     nav {
         padding: 20px;
     }
+    .nav-right {
+        gap: 16px;
+    }
+    .nav-links {
+        gap: 16px;
+    }
     header {
         padding: 0 20px;
     }
@@ -245,78 +273,87 @@ section {
 
 <nav>
     <div class="logo">PhnomTR</div>
-    <div class="nav-links">
-        <a href="#expertise">Expertise</a>
-        <a href="#projects">Projekte</a>
-        <a href="#timeline">Timeline</a>
-        <a href="#contact">Kontakt</a>
+    <div class="nav-right">
+        <div class="nav-links">
+            <a href="#expertise" data-i18n="nav_expertise">Expertise</a>
+            <a href="#projects" data-i18n="nav_projects">Projects</a>
+            <a href="#timeline" data-i18n="nav_timeline">Timeline</a>
+            <a href="#contact" data-i18n="nav_contact">Contact</a>
+        </div>
+        <select class="lang-select" id="langSelect">
+            <option value="en">EN</option>
+            <option value="de">DE</option>
+            <option value="tr">TR</option>
+            <option value="ru">RU</option>
+            <option value="pt">PT</option>
+        </select>
     </div>
 </nav>
 
 <header>
-    <h1 class="fade-in">PhnomTR</h1>
-    <p class="hero-slogan fade-in">Engineering Digital Realities</p>
-    <a href="#projects" class="btn fade-in">Projekte ansehen</a>
+    <h1 class="fade-in" data-i18n="hero_title">PhnomTR</h1>
+    <p class="hero-slogan fade-in" data-i18n="hero_slogan">Engineering Digital Realities</p>
+    <a href="#projects" class="btn fade-in" data-i18n="hero_btn">View Projects</a>
 </header>
 
 <section id="expertise">
-    <h2 class="section-title fade-in">Expertise</h2>
+    <h2 class="section-title fade-in" data-i18n="exp_title">Expertise</h2>
     <div class="grid-3">
         <div class="card fade-in">
-            <h3>3D-Modelling</h3>
-            <p>Erstellung detailgetreuer High-Poly und Low-Poly Modelle mit Fokus auf präzise Topologie und saubere Texturierung.</p>
+            <h3 data-i18n="exp_3d_title">3D-Modelling</h3>
+            <p data-i18n="exp_3d_desc">Creation of detailed high-poly and low-poly models with a focus on precise topology and clean texturing.</p>
         </div>
         <div class="card fade-in">
-            <h3>Vehicle Physics</h3>
-            <p>Entwicklung und Feinabstimmung komplexer Fahrzeugdynamiken sowie realitätsnaher Reibungsmodelle.</p>
+            <h3 data-i18n="exp_physics_title">Vehicle Physics</h3>
+            <p data-i18n="exp_physics_desc">Development and fine-tuning of complex vehicle dynamics and realistic friction models.</p>
         </div>
         <div class="card fade-in">
-            <h3>Web-Development</h3>
-            <p>Umsetzung performanter und minimalistischer Webanwendungen mit Fokus auf Usability und sauberen Code.</p>
+            <h3 data-i18n="exp_web_title">Web-Development</h3>
+            <p data-i18n="exp_web_desc">Implementation of performant and minimalist web applications focusing on usability and clean code.</p>
         </div>
     </div>
 </section>
 
 <section id="projects">
-    <h2 class="section-title fade-in">Projekte</h2>
+    <h2 class="section-title fade-in" data-i18n="proj_title">Projects</h2>
     <div class="grid-3">
         <div class="card fade-in">
-            <h3>Evo Phone</h3>
-            <p>Ein minimalistisches Smartphone-Konzept mit Fokus auf reduziertes UI/UX-Design und flüssige Interaktionen.</p>
+            <h3 data-i18n="proj_evo_title">Evo Phone</h3>
+            <p data-i18n="proj_evo_desc">A minimalist smartphone concept focusing on reduced UI/UX design and fluid interactions.</p>
         </div>
         <div class="card fade-in">
-            <h3>Vehicle Suite</h3>
-            <p>Erweiterte physikalische Simulationen zur genauen Analyse von Fahrverhalten und Aerodynamik.</p>
+            <h3 data-i18n="proj_suite_title">Vehicle Suite</h3>
+            <p data-i18n="proj_suite_desc">Advanced physical simulations for precise analysis of driving behavior and aerodynamics.</p>
         </div>
         <div class="card fade-in">
-            <h3>Web Engine</h3>
-            <p>Eine schlanke Umgebung zur Darstellung interaktiver 3D-Elemente direkt im Browser.</p>
+            <h3 data-i18n="proj_engine_title">Web Engine</h3>
+            <p data-i18n="proj_engine_desc">A lightweight environment for rendering interactive 3D elements directly in the browser.</p>
         </div>
     </div>
 </section>
 
 <section id="timeline">
-    <h2 class="section-title fade-in">Timeline</h2>
+    <h2 class="section-title fade-in" data-i18n="tl_title">Timeline</h2>
     <div class="timeline">
         <div class="timeline-item fade-in">
-            <h4>2023 - Gegenwart</h4>
-            <p>Fokus auf moderne Web-Architekturen und Echtzeit-Simulationen.</p>
+            <h4 data-i18n="tl_1_date">2023 - Present</h4>
+            <p data-i18n="tl_1_desc">Focus on modern web architectures and real-time simulations.</p>
         </div>
         <div class="timeline-item fade-in">
-            <h4>2021 - 2023</h4>
-            <p>Vertiefung in Vehicle Physics und Entwicklung technischer Simulationen.</p>
+            <h4 data-i18n="tl_2_date">2021 - 2023</h4>
+            <p data-i18n="tl_2_desc">Deepening knowledge in vehicle physics and developing technical simulations.</p>
         </div>
         <div class="timeline-item fade-in">
-            <h4>2019 - 2021</h4>
-            <p>Einstieg in das 3D-Modelling und Grundlagen der Softwareentwicklung.</p>
+            <h4 data-i18n="tl_3_date">2019 - 2021</h4>
+            <p data-i18n="tl_3_desc">Introduction to 3D modelling and basics of software development.</p>
         </div>
     </div>
 </section>
 
 <section id="contact">
     <div class="contact-box fade-in">
-        <h2 class="section-title" style="margin-bottom: 12px;">Kontakt</h2>
-        <p style="color: #888; font-size: 0.95rem;">Offen für neue Projekte und Anfragen. Schreib mir direkt per Mail oder Discord.</p>
+        <h2 class="section-title" style="margin-bottom: 12px;" data-i18n="contact_title">Contact</h2>
+        <p style="color: #888; font-size: 0.95rem;" data-i18n="contact_desc">Open for new projects and inquiries. Reach out directly via mail or Discord.</p>
         <p style="color: #fff; font-size: 0.95rem; margin-top: 16px;">phnomtr@example.com</p>
         <div class="contact-links">
             <a href="https://discord.com" target="_blank" class="contact-link">Discord</a>
@@ -326,6 +363,188 @@ section {
 </section>
 
 <script>
+const translations = {
+    en: {
+        nav_expertise: "Expertise",
+        nav_projects: "Projects",
+        nav_timeline: "Timeline",
+        nav_contact: "Contact",
+        hero_title: "PhnomTR",
+        hero_slogan: "Engineering Digital Realities",
+        hero_btn: "View Projects",
+        exp_title: "Expertise",
+        exp_3d_title: "3D-Modelling",
+        exp_3d_desc: "Creation of detailed high-poly and low-poly models with a focus on precise topology and clean texturing.",
+        exp_physics_title: "Vehicle Physics",
+        exp_physics_desc: "Development and fine-tuning of complex vehicle dynamics and realistic friction models.",
+        exp_web_title: "Web-Development",
+        exp_web_desc: "Implementation of performant and minimalist web applications focusing on usability and clean code.",
+        proj_title: "Projects",
+        proj_evo_title: "Evo Phone",
+        proj_evo_desc: "A minimalist smartphone concept focusing on reduced UI/UX design and fluid interactions.",
+        proj_suite_title: "Vehicle Suite",
+        proj_suite_desc: "Advanced physical simulations for precise analysis of driving behavior and aerodynamics.",
+        proj_engine_title: "Web Engine",
+        proj_engine_desc: "A lightweight environment for rendering interactive 3D elements directly in the browser.",
+        tl_title: "Timeline",
+        tl_1_date: "2023 - Present",
+        tl_1_desc: "Focus on modern web architectures and real-time simulations.",
+        tl_2_date: "2021 - 2023",
+        tl_2_desc: "Deepening knowledge in vehicle physics and developing technical simulations.",
+        tl_3_date: "2019 - 2021",
+        tl_3_desc: "Introduction to 3D modelling and basics of software development.",
+        contact_title: "Contact",
+        contact_desc: "Open for new projects and inquiries. Reach out directly via mail or Discord."
+    },
+    de: {
+        nav_expertise: "Expertise",
+        nav_projects: "Projekte",
+        nav_timeline: "Timeline",
+        nav_contact: "Kontakt",
+        hero_title: "PhnomTR",
+        hero_slogan: "Engineering Digital Realities",
+        hero_btn: "Projekte ansehen",
+        exp_title: "Expertise",
+        exp_3d_title: "3D-Modelling",
+        exp_3d_desc: "Erstellung detailgetreuer High-Poly und Low-Poly Modelle mit Fokus auf präzise Topologie und saubere Texturierung.",
+        exp_physics_title: "Vehicle Physics",
+        exp_physics_desc: "Entwicklung und Feinabstimmung komplexer Fahrzeugdynamiken sowie realitätsnaher Reibungsmodelle.",
+        exp_web_title: "Web-Development",
+        exp_web_desc: "Umsetzung performanter und minimalistischer Webanwendungen mit Fokus auf Usability und sauberen Code.",
+        proj_title: "Projekte",
+        proj_evo_title: "Evo Phone",
+        proj_evo_desc: "Ein minimalistisches Smartphone-Konzept mit Fokus auf reduziertes UI/UX-Design und flüssige Interaktionen.",
+        proj_suite_title: "Vehicle Suite",
+        proj_suite_desc: "Erweiterte physikalische Simulationen zur genauen Analyse von Fahrverhalten und Aerodynamik.",
+        proj_engine_title: "Web Engine",
+        proj_engine_desc: "Eine schlanke Umgebung zur Darstellung interaktiver 3D-Elemente direkt im Browser.",
+        tl_title: "Timeline",
+        tl_1_date: "2023 - Gegenwart",
+        tl_1_desc: "Fokus auf moderne Web-Architekturen und Echtzeit-Simulationen.",
+        tl_2_date: "2021 - 2023",
+        tl_2_desc: "Vertiefung in Vehicle Physics und Entwicklung technischer Simulationen.",
+        tl_3_date: "2019 - 2021",
+        tl_3_desc: "Einstieg in das 3D-Modelling und Grundlagen der Softwareentwicklung.",
+        contact_title: "Kontakt",
+        contact_desc: "Offen für neue Projekte und Anfragen. Schreib mir direkt per Mail oder Discord."
+    },
+    tr: {
+        nav_expertise: "Uzmanlık",
+        nav_projects: "Projeler",
+        nav_timeline: "Zaman Çizelgesi",
+        nav_contact: "İletişim",
+        hero_title: "PhnomTR",
+        hero_slogan: "Engineering Digital Realities",
+        hero_btn: "Projeleri Gör",
+        exp_title: "Uzmanlık",
+        exp_3d_title: "3D Modelleme",
+        exp_3d_desc: "Hassas topoloji ve temiz kaplamaya odaklanarak detaylı yüksek ve düşük poligonlu modellerin oluşturulması.",
+        exp_physics_title: "Araç Fiziği",
+        exp_physics_desc: "Karmaşık araç dinamiklerinin ve gerçekçi sürtünme modellerinin geliştirilmesi ve ince ayarı.",
+        exp_web_title: "Web Geliştirme",
+        exp_web_desc: "Kullanılabilirlik ve temiz koda odaklanan yüksek performanslı ve minimalist web uygulamalarının hayata geçirilmesi.",
+        proj_title: "Projeler",
+        proj_evo_title: "Evo Phone",
+        proj_evo_desc: "İndirgenmiş UI/UX tasarımı ve akıcı etkileşimlere odaklanan minimalist bir akıllı telefon konsepti.",
+        proj_suite_title: "Araç Paketi",
+        proj_suite_desc: "Sürüş davranışının ve aerodinamiğin hassas analizi için gelişmiş fiziksel simülasyonlar.",
+        proj_engine_title: "Web Motoru",
+        proj_engine_desc: "İnteraktif 3D öğeleri doğrudan tarayıcıda render etmek için hafif bir ortam.",
+        tl_title: "Zaman Çizelgesi",
+        tl_1_date: "2023 - Günümüz",
+        tl_1_desc: "Modern web mimarileri ve gerçek zamanlı simülasyonlar üzerine odaklanma.",
+        tl_2_date: "2021 - 2023",
+        tl_2_desc: "Araç fiziği konusunda derinleşme ve teknik simülasyonların geliştirilmesi.",
+        tl_3_date: "2019 - 2021",
+        tl_3_desc: "3D modellemeye giriş ve yazılım geliştirmenin temelleri.",
+        contact_title: "İletişim",
+        contact_desc: "Yeni projeler ve sorular için açığım. E-posta veya Discord üzerinden doğrudan ulaşabilirsiniz."
+    },
+    ru: {
+        nav_expertise: "Экспертиза",
+        nav_projects: "Проекты",
+        nav_timeline: "Хронология",
+        nav_contact: "Контакты",
+        hero_title: "PhnomTR",
+        hero_slogan: "Engineering Digital Realities",
+        hero_btn: "Смотреть проекты",
+        exp_title: "Экспертиза",
+        exp_3d_title: "3D-моделирование",
+        exp_3d_desc: "Создание детализированных high-poly и low-poly моделей с акцентом на точную топологию и чистые текстуры.",
+        exp_physics_title: "Физика транспорта",
+        exp_physics_desc: "Разработка и точная настройка сложной динамики автомобилей и реалистичных моделей трения.",
+        exp_web_title: "Веб-разработка",
+        exp_web_desc: "Создание производительных и минималистичных веб-приложений с упором на юзабилити и чистый код.",
+        proj_title: "Проекты",
+        proj_evo_title: "Evo Phone",
+        proj_evo_desc: "Минималистичная концепция смартфона с акцентом на уменьшенный UI/UX дизайн и плавные взаимодействия.",
+        proj_suite_title: "Пакет симуляций",
+        proj_suite_desc: "Продвинутые физические симуляции для точного анализа поведения автомобиля и аэродинамики.",
+        proj_engine_title: "Веб-движок",
+        proj_engine_desc: "Легковесная среда для рендеринга интерактивных 3D-элементов прямо в браузере.",
+        tl_title: "Хронология",
+        tl_1_date: "2023 - Настоящее время",
+        tl_1_desc: "Фокус на современных веб-архитектурах и симуляциях в реальном времени.",
+        tl_2_date: "2021 - 2023",
+        tl_2_desc: "Углубление знаний в физике транспорта и разработка технических симуляций.",
+        tl_3_date: "2019 - 2021",
+        tl_3_desc: "Знакомство с 3D-моделированием и основы разработки ПО.",
+        contact_title: "Контакты",
+        contact_desc: "Открыт для новых проектов и вопросов. Свяжитесь со мной напрямую через почту или Discord."
+    },
+    pt: {
+        nav_expertise: "Especialidade",
+        nav_projects: "Projetos",
+        nav_timeline: "Linha do Tempo",
+        nav_contact: "Contato",
+        hero_title: "PhnomTR",
+        hero_slogan: "Engineering Digital Realities",
+        hero_btn: "Ver Projetos",
+        exp_title: "Especialidade",
+        exp_3d_title: "Modelagem 3D",
+        exp_3d_desc: "Criação de modelos high-poly e low-poly detalhados, com foco em topologia precisa e texturização limpa.",
+        exp_physics_title: "Física de Veículos",
+        exp_physics_desc: "Desenvolvimento e ajuste fino de dinâmicas complexas de veículos e modelos realistas de atrito.",
+        exp_web_title: "Desenvolvimento Web",
+        exp_web_desc: "Implementação de aplicações web performáticas e minimalistas, focando em usabilidade e código limpo.",
+        proj_title: "Projetos",
+        proj_evo_title: "Evo Phone",
+        proj_evo_desc: "Um conceito minimalista de smartphone focado em design de UI/UX reduzido e interações fluidas.",
+        proj_suite_title: "Suíte de Veículos",
+        proj_suite_desc: "Simulações físicas avançadas para análise precisa do comportamento de direção e aerodinâmica.",
+        proj_engine_title: "Motor Web",
+        proj_engine_desc: "Um ambiente leve para renderizar elementos 3D interativos diretamente no navegador.",
+        tl_title: "Linha do Tempo",
+        tl_1_date: "2023 - Presente",
+        tl_1_desc: "Foco em arquiteturas web modernas e simulações em tempo real.",
+        tl_2_date: "2021 - 2023",
+        tl_2_desc: "Aprofundamento em física de veículos e desenvolvimento de simulações técnicas.",
+        tl_3_date: "2019 - 2021",
+        tl_3_desc: "Introdução à modelagem 3D e fundamentos de desenvolvimento de software.",
+        contact_title: "Contato",
+        contact_desc: "Aberto a novos projetos e dúvidas. Entre em contato diretamente via e-mail ou Discord."
+    }
+};
+
+function setLanguage(lang) {
+    localStorage.setItem('preferred_lang', lang);
+    document.documentElement.setAttribute('lang', lang);
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+            el.textContent = translations[lang][key];
+        }
+    });
+    document.getElementById('langSelect').value = lang;
+}
+
+const savedLang = localStorage.getItem('preferred_lang') || 'en';
+setLanguage(savedLang);
+
+document.getElementById('langSelect').addEventListener('change', function(e) {
+    setLanguage(e.target.value);
+});
+
 const observer = new IntersectionObserver(function(entries, observerInstance) {
     entries.forEach(function(entry) {
         if (entry.isIntersecting) {
