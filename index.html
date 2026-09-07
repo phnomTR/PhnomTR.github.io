@@ -3,8 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PhnomTR - Portfolio</title>
+<meta name="description" content="PhnomTR - Portfolio für 3D-Modelling, Vehicle Physics und Web-Development. Engineering Digital Realities.">
+<title>PhnomTR</title>
 <style>
+html {
+    scroll-behavior: smooth;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -12,77 +17,50 @@
 }
 
 body {
-    background-color: #030308;
-    color: #f0f0f5;
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    overflow-x: hidden;
-    cursor: none;
-}
-
-canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1;
-    pointer-events: none;
-}
-
-.cursor {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 16px;
-    height: 16px;
-    background: #00f0ff;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-    box-shadow: 0 0 15px #00f0ff, 0 0 30px #7000ff;
-    transition: transform 0.05s ease;
-    mix-blend-mode: screen;
+    background-color: #0a0a0a;
+    color: #ededed;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
 }
 
 nav {
     position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90%;
-    max-width: 1200px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid #222;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 30px;
+    padding: 20px 40px;
     z-index: 1000;
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 20px;
 }
 
 .logo {
-    font-weight: 700;
-    font-size: 1.2rem;
-    letter-spacing: 1px;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #fff;
+    letter-spacing: -0.01em;
 }
 
 .nav-links {
     display: flex;
-    gap: 30px;
+    gap: 32px;
 }
 
 .nav-links a {
-    color: #a0a0b0;
+    color: #888;
     text-decoration: none;
-    font-size: 0.95rem;
-    transition: color 0.3s ease;
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
 }
 
 .nav-links a:hover {
-    color: #00f0ff;
+    color: #fff;
 }
 
 header {
@@ -90,173 +68,156 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 0 20px;
+    align-items: flex-start;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 40px;
 }
 
-.gradient-text {
-    background: linear-gradient(270deg, #00f0ff, #7000ff, #ff007f, #00f0ff);
-    background-size: 300% auto;
-    color: transparent;
-    -webkit-background-clip: text;
-    animation: flowGradient 6s linear infinite;
-    font-size: 5rem;
-    font-weight: 800;
-    margin-bottom: 15px;
-    letter-spacing: -1px;
-}
-
-@keyframes flowGradient {
-    to {
-        background-position: 300% center;
-    }
+header h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.03em;
+    margin-bottom: 16px;
 }
 
 .hero-slogan {
-    font-size: 1.8rem;
-    color: #9090a5;
-    font-weight: 300;
-    margin-bottom: 40px;
+    font-size: 1.5rem;
+    color: #888;
+    font-weight: 400;
+    margin-bottom: 32px;
+    letter-spacing: -0.01em;
 }
 
 .btn {
-    padding: 14px 32px;
-    background: linear-gradient(135deg, #00f0ff, #7000ff);
-    color: #fff;
-    border: none;
-    border-radius: 30px;
-    font-weight: 600;
-    font-size: 1rem;
-    cursor: pointer;
+    display: inline-block;
+    padding: 10px 20px;
+    background: #fff;
+    color: #0a0a0a;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 0.9rem;
     text-decoration: none;
-    box-shadow: 0 10px 30px rgba(0, 240, 255, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: background 0.2s ease;
 }
 
 .btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 15px 40px rgba(112, 0, 255, 0.4);
+    background: #d4d4d4;
 }
 
 section {
-    padding: 120px 20px;
-    max-width: 1200px;
+    padding: 100px 40px;
+    max-width: 1000px;
     margin: 0 auto;
 }
 
 .section-title {
-    font-size: 2.5rem;
-    margin-bottom: 60px;
-    text-align: center;
-    font-weight: 700;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 40px;
+    letter-spacing: -0.02em;
 }
 
 .grid-3 {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
 }
 
 .card {
-    background: rgba(255, 255, 255, 0.02);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    border-radius: 24px;
-    padding: 40px;
-    transition: transform 0.4s ease, border-color 0.4s ease, background 0.4s ease;
+    background: #121212;
+    border: 1px solid #262626;
+    border-radius: 8px;
+    padding: 32px;
+    transition: border-color 0.2s ease;
 }
 
 .card:hover {
-    transform: translateY(-8px);
-    border-color: rgba(0, 240, 255, 0.3);
-    background: rgba(255, 255, 255, 0.04);
+    border-color: #525252;
 }
 
 .card h3 {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
+    font-size: 1.1rem;
+    font-weight: 600;
     color: #fff;
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
 }
 
 .card p {
-    color: #9090a0;
+    color: #888;
+    font-size: 0.95rem;
     line-height: 1.6;
-    font-size: 1rem;
 }
 
 .timeline {
-    position: relative;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.timeline::after {
-    content: '';
-    position: absolute;
-    width: 2px;
-    background: rgba(255, 255, 255, 0.1);
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    margin-left: -1px;
+    border-left: 1px solid #262626;
+    margin-left: 10px;
+    padding-left: 30px;
 }
 
 .timeline-item {
-    padding: 10px 40px;
+    margin-bottom: 40px;
     position: relative;
-    background: inherit;
-    width: 50%;
 }
 
-.timeline-item::after {
+.timeline-item::before {
     content: '';
     position: absolute;
-    width: 16px;
-    height: 16px;
-    right: -8px;
-    background-color: #00f0ff;
+    left: -35.5px;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    background: #262626;
     border-radius: 50%;
-    top: 20px;
-    box-shadow: 0 0 10px #00f0ff;
 }
 
-.left {
-    left: 0;
+.timeline-item h4 {
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 6px;
 }
 
-.right {
-    left: 50%;
-}
-
-.right::after {
-    left: -8px;
-}
-
-.timeline-content {
-    padding: 25px 30px;
-    background: rgba(255, 255, 255, 0.02);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    border-radius: 16px;
-}
-
-.timeline-content h4 {
-    color: #00f0ff;
-    margin-bottom: 8px;
-    font-size: 1.2rem;
-}
-
-.timeline-content p {
-    color: #9090a0;
+.timeline-item p {
+    color: #888;
     font-size: 0.95rem;
+}
+
+.contact-box {
+    background: #121212;
+    border: 1px solid #262626;
+    border-radius: 8px;
+    padding: 40px;
+}
+
+.contact-links {
+    display: flex;
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.contact-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 8px 16px;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 6px;
+    transition: border-color 0.2s ease;
+}
+
+.contact-link:hover {
+    border-color: #666;
 }
 
 .fade-in {
     opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
+    transform: translateY(15px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
 .fade-in.appear {
@@ -264,66 +225,23 @@ section {
     transform: translateY(0);
 }
 
-.contact-box {
-    text-align: center;
-    background: rgba(255, 255, 255, 0.02);
-    backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    border-radius: 30px;
-    padding: 60px;
-}
-
-.contact-links {
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    margin-top: 30px;
-}
-
-.contact-link {
-    color: #fff;
-    text-decoration: none;
-    font-size: 1.1rem;
-    padding: 12px 24px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 14px;
-    transition: background 0.3s ease, border-color 0.3s ease;
-}
-
-.contact-link:hover {
-    background: rgba(0, 240, 255, 0.1);
-    border-color: #00f0ff;
-}
-
-@media(max-width: 768px) {
-    .gradient-text {
+@media (max-width: 768px) {
+    nav {
+        padding: 20px;
+    }
+    header {
+        padding: 0 20px;
+    }
+    header h1 {
         font-size: 3rem;
     }
-    .hero-slogan {
-        font-size: 1.2rem;
-    }
-    .timeline::after {
-        left: 31px;
-    }
-    .timeline-item {
-        width: 100%;
-        padding-left: 70px;
-        padding-right: 25px;
-    }
-    .right {
-        left: 0%;
-    }
-    .left::after, .right::after {
-        left: 23px;
+    section {
+        padding: 80px 20px;
     }
 }
 </style>
 </head>
 <body>
-
-<div class="cursor"></div>
-<canvas id="canvas"></canvas>
 
 <nav>
     <div class="logo">PhnomTR</div>
@@ -336,7 +254,7 @@ section {
 </nav>
 
 <header>
-    <h1 class="gradient-text fade-in">PhnomTR</h1>
+    <h1 class="fade-in">PhnomTR</h1>
     <p class="hero-slogan fade-in">Engineering Digital Realities</p>
     <a href="#projects" class="btn fade-in">Projekte ansehen</a>
 </header>
@@ -346,15 +264,15 @@ section {
     <div class="grid-3">
         <div class="card fade-in">
             <h3>3D-Modelling</h3>
-            <p>Erstellung detailgetreuer High-Poly und Low-Poly Modelle mit präzisem Fokus auf Topologie, Texturing und realistische Oberflächenstrukturen.</p>
+            <p>Erstellung detailgetreuer High-Poly und Low-Poly Modelle mit Fokus auf präzise Topologie und saubere Texturierung.</p>
         </div>
         <div class="card fade-in">
             <h3>Vehicle Physics</h3>
-            <p>Entwicklung und Feinabstimmung komplexer Fahrzeugdynamiken, Federungssysteme und Reibungsmodelle für maximale Realitätsnähe.</p>
+            <p>Entwicklung und Feinabstimmung komplexer Fahrzeugdynamiken sowie realitätsnaher Reibungsmodelle.</p>
         </div>
         <div class="card fade-in">
             <h3>Web-Development</h3>
-            <p>Programmierung performanter, moderner und visuell beeindruckender Webanwendungen mit nahtlosen Interaktionen und cleanem Code.</p>
+            <p>Umsetzung performanter und minimalistischer Webanwendungen mit Fokus auf Usability und sauberen Code.</p>
         </div>
     </div>
 </section>
@@ -364,48 +282,42 @@ section {
     <div class="grid-3">
         <div class="card fade-in">
             <h3>Evo Phone</h3>
-            <p>Ein futuristisches Smartphone-Konzept mit Fokus auf nahtloses UI/UX-Design, digitale Hologramm-Integration und High-End Hardware-Simulation.</p>
+            <p>Ein minimalistisches Smartphone-Konzept mit Fokus auf reduziertes UI/UX-Design und flüssige Interaktionen.</p>
         </div>
         <div class="card fade-in">
-            <h3>Vehicle Dynamics Suite</h3>
-            <p>Erweiterte physikalische Simulationen für Simulationsplattformen zur exakten Analyse von Reifenverhalten und Aerodynamik.</p>
+            <h3>Vehicle Suite</h3>
+            <p>Erweiterte physikalische Simulationen zur genauen Analyse von Fahrverhalten und Aerodynamik.</p>
         </div>
         <div class="card fade-in">
-            <h3>Immersive Web Engine</h3>
-            <p>Eine experimentelle Web-Umgebung zur Darstellung interaktiver 3D-Objekte direkt im Browser ohne spürbare Ladezeiten.</p>
+            <h3>Web Engine</h3>
+            <p>Eine schlanke Umgebung zur Darstellung interaktiver 3D-Elemente direkt im Browser.</p>
         </div>
     </div>
 </section>
 
 <section id="timeline">
-    <h2 class="section-title fade-in">Werdegang</h2>
+    <h2 class="section-title fade-in">Timeline</h2>
     <div class="timeline">
-        <div class="timeline-item left fade-in">
-            <div class="timeline-content">
-                <h4>2023 - Gegenwart</h4>
-                <p>Fokus auf fortgeschrittene Web-Architekturen und komplexe Echtzeit-Simulationen.</p>
-            </div>
+        <div class="timeline-item fade-in">
+            <h4>2023 - Gegenwart</h4>
+            <p>Fokus auf moderne Web-Architekturen und Echtzeit-Simulationen.</p>
         </div>
-        <div class="timeline-item right fade-in">
-            <div class="timeline-content">
-                <h4>2021 - 2023</h4>
-                <p>Vertiefung in Vehicle Physics und Entwicklung maßgeschneiderter Modifikationen.</p>
-            </div>
+        <div class="timeline-item fade-in">
+            <h4>2021 - 2023</h4>
+            <p>Vertiefung in Vehicle Physics und Entwicklung technischer Simulationen.</p>
         </div>
-        <div class="timeline-item left fade-in">
-            <div class="timeline-content">
-                <h4>2019 - 2021</h4>
-                <p>Einstieg in das 3D-Modelling und erste digitale Design-Experimente.</p>
-            </div>
+        <div class="timeline-item fade-in">
+            <h4>2019 - 2021</h4>
+            <p>Einstieg in das 3D-Modelling und Grundlagen der Softwareentwicklung.</p>
         </div>
     </div>
 </section>
 
 <section id="contact">
     <div class="contact-box fade-in">
-        <h2 class="section-title" style="margin-bottom: 20px;">Lass uns connecten</h2>
-        <p style="color: #9090a0; margin-bottom: 30px;">Bereit für neue Projekte oder Fragen? Schreib mir direkt.</p>
-        <p style="color: #00f0ff; font-size: 1.2rem; font-weight: 500;">phnomtr@example.com</p>
+        <h2 class="section-title" style="margin-bottom: 12px;">Kontakt</h2>
+        <p style="color: #888; font-size: 0.95rem;">Offen für neue Projekte und Anfragen. Schreib mir direkt per Mail oder Discord.</p>
+        <p style="color: #fff; font-size: 0.95rem; margin-top: 16px;">phnomtr@example.com</p>
         <div class="contact-links">
             <a href="https://discord.com" target="_blank" class="contact-link">Discord</a>
             <a href="https://github.com" target="_blank" class="contact-link">GitHub</a>
@@ -414,123 +326,14 @@ section {
 </section>
 
 <script>
-const canvas = document.getElementById('canvas');
-const ctx = canvas.getContext('2d');
-
-let width, height;
-let particles = [];
-let mouse = { x: null, y: null, radius: 140 };
-
-function resizeCanvas() {
-    width = canvas.width = window.innerWidth;
-    height = canvas.height = window.innerHeight;
-}
-
-window.addEventListener('resize', resizeCanvas);
-resizeCanvas();
-
-window.addEventListener('mousemove', function(e) {
-    mouse.x = e.clientX;
-    mouse.y = e.clientY;
-});
-
-window.addEventListener('mouseout', function() {
-    mouse.x = null;
-    mouse.y = null;
-});
-
-class Particle {
-    constructor() {
-        this.x = Math.random() * width;
-        this.y = Math.random() * height;
-        this.vx = (Math.random() - 0.5) * 0.8;
-        this.vy = (Math.random() - 0.5) * 0.8;
-        this.radius = Math.random() * 1.5 + 0.8;
-    }
-
-    update() {
-        this.x += this.vx;
-        this.y += this.vy;
-
-        if (this.x < 0 || this.x > width) this.vx *= -1;
-        if (this.y < 0 || this.y > height) this.vy *= -1;
-
-        if (mouse.x !== null && mouse.y !== null) {
-            let dx = mouse.x - this.x;
-            let dy = mouse.y - this.y;
-            let dist = Math.sqrt(dx * dx + dy * dy);
-            if (dist < mouse.radius) {
-                let angle = Math.atan2(dy, dx);
-                this.x -= Math.cos(angle) * 1.5;
-                this.y -= Math.sin(angle) * 1.5;
-            }
-        }
-    }
-
-    draw() {
-        ctx.fillStyle = 'rgba(0, 240, 255, 0.5)';
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fill();
-    }
-}
-
-function initParticles() {
-    particles = [];
-    let count = Math.floor((width * height) / 12000);
-    for (let i = 0; i < count; i++) {
-        particles.push(new Particle());
-    }
-}
-
-initParticles();
-window.addEventListener('resize', initParticles);
-
-function animateParticles() {
-    ctx.clearRect(0, 0, width, height);
-
-    for (let i = 0; i < particles.length; i++) {
-        particles[i].update();
-        particles[i].draw();
-
-        for (let j = i + 1; j < particles.length; j++) {
-            let dx = particles[i].x - particles[j].x;
-            let dy = particles[i].y - particles[j].y;
-            let dist = Math.sqrt(dx * dx + dy * dy);
-
-            if (dist < 100) {
-                ctx.strokeStyle = 'rgba(112, 0, 255, ' + (1 - dist / 100) * 0.15 + ')';
-                ctx.lineWidth = 0.5;
-                ctx.beginPath();
-                ctx.moveTo(particles[i].x, particles[i].y);
-                ctx.lineTo(particles[j].x, particles[j].y);
-                ctx.stroke();
-            }
-        }
-    }
-
-    requestAnimationFrame(animateParticles);
-}
-
-animateParticles();
-
-const cursor = document.querySelector('.cursor');
-window.addEventListener('mousemove', function(e) {
-    cursor.style.transform = 'translate(' + (e.clientX - 8) + 'px, ' + (e.clientY - 8) + 'px)';
-});
-
-const observerOptions = {
-    threshold: 0.15
-};
-
-const observer = new IntersectionObserver(function(entries, observer) {
+const observer = new IntersectionObserver(function(entries, observerInstance) {
     entries.forEach(function(entry) {
         if (entry.isIntersecting) {
             entry.target.classList.add('appear');
-            observer.unobserve(entry.target);
+            observerInstance.unobserve(entry.target);
         }
     });
-}, observerOptions);
+}, { threshold: 0.1 });
 
 document.querySelectorAll('.fade-in').forEach(function(el) {
     observer.observe(el);
