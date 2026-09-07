@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="PhnomTR - Portfolio for Evo Phone and digital engineering projects. Engineering Digital Realities.">
+<meta name="description" content="PhnomTR - Portfolio for Evo Phone BeamNG.drive mod and digital engineering projects. Engineering Digital Realities.">
 <title>PhnomTR</title>
 <style>
 html {
@@ -121,6 +121,8 @@ header h1 {
     font-weight: 500;
     font-size: 0.9rem;
     text-decoration: none;
+    cursor: pointer;
+    border: none;
     transition: background 0.2s ease;
 }
 
@@ -151,11 +153,13 @@ section {
     border: 1px solid #262626;
     border-radius: 8px;
     padding: 32px;
-    transition: border-color 0.2s ease;
+    cursor: pointer;
+    transition: border-color 0.2s ease, transform 0.2s ease;
 }
 
 .card:hover {
     border-color: #525252;
+    transform: translateY(-2px);
 }
 
 .card h3 {
@@ -201,6 +205,82 @@ section {
     border-color: #666;
 }
 
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-content {
+    background: #121212;
+    border: 1px solid #262626;
+    border-radius: 12px;
+    padding: 40px;
+    width: 90%;
+    max-width: 550px;
+    transform: translateY(15px);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.active .modal-content {
+    transform: translateY(0);
+}
+
+.modal-subtitle {
+    color: #888;
+    font-size: 0.9rem;
+    margin-bottom: 24px;
+}
+
+.modal-feature {
+    margin-bottom: 20px;
+}
+
+.modal-feature h4 {
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.modal-feature p {
+    color: #888;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 32px;
+    padding-top: 20px;
+    border-top: 1px solid #262626;
+}
+
+.modal-status {
+    color: #00f0ff;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
 .fade-in {
     opacity: 0;
     transform: translateY(15px);
@@ -230,6 +310,14 @@ section {
     }
     section {
         padding: 80px 20px;
+    }
+    .modal-content {
+        padding: 24px;
+    }
+    .modal-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
     }
 }
 </style>
@@ -262,9 +350,9 @@ section {
 <section id="projects">
     <h2 class="section-title fade-in" data-i18n="proj_title">Projects</h2>
     <div class="card-container">
-        <div class="card fade-in">
+        <div class="card fade-in" id="evoCard">
             <h3 data-i18n="proj_evo_title">Evo Phone</h3>
-            <p data-i18n="proj_evo_desc">A minimalist smartphone concept focusing on reduced UI/UX design and fluid interactions.</p>
+            <p data-i18n="proj_evo_desc">Das Evo Phone ist ein vollständiges Smartphone-Mod in BeamNG.drive. Es befindet sich aktuell in der Alpha. Klicke für weitere Informationen.</p>
         </div>
     </div>
 </section>
@@ -281,6 +369,33 @@ section {
     </div>
 </section>
 
+<div class="modal-overlay" id="projectModal">
+    <div class="modal-content">
+        <h3 style="color: #fff; font-size: 1.25rem; margin-bottom: 4px;" data-i18n="modal_title">Evo Phone (BeamNG.drive Mod)</h3>
+        <p class="modal-subtitle" data-i18n="modal_subtitle">Detailed Overview & Features</p>
+        
+        <div class="modal-body">
+            <div class="modal-feature">
+                <h4 data-i18n="modal_feat1_title">Interactive In-Game UI</h4>
+                <p data-i18n="modal_feat1_desc">Fully functional touchscreen interface rendered directly inside the game environment.</p>
+            </div>
+            <div class="modal-feature">
+                <h4 data-i18n="modal_feat2_title">Custom Apps</h4>
+                <p data-i18n="modal_feat2_desc">Built-in applications ranging from telemetry tools to media players and vehicle controls.</p>
+            </div>
+            <div class="modal-feature">
+                <h4 data-i18n="modal_feat3_title">Vehicle Integration</h4>
+                <p data-i18n="modal_feat3_desc">Seamlessly connects with BeamNG vehicles for real-time telemetry and remote features.</p>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <span class="modal-status" data-i18n="modal_status">Status: Currently in Alpha development phase.</span>
+            <button class="btn" id="closeModalBtn" data-i18n="modal_close">Close</button>
+        </div>
+    </div>
+</div>
+
 <script>
 const translations = {
     en: {
@@ -291,9 +406,19 @@ const translations = {
         hero_btn: "View Projects",
         proj_title: "Projects",
         proj_evo_title: "Evo Phone",
-        proj_evo_desc: "A minimalist smartphone concept focusing on reduced UI/UX design and fluid interactions.",
+        proj_evo_desc: "The Evo Phone is a complete smartphone mod in BeamNG.drive. It is currently in alpha. Click for more information.",
         contact_title: "Contact",
-        contact_desc: "Open for new projects and inquiries. Reach out directly via mail or Discord."
+        contact_desc: "Open for new projects and inquiries. Reach out directly via mail or Discord.",
+        modal_title: "Evo Phone (BeamNG.drive Mod)",
+        modal_subtitle: "Detailed Overview & Features",
+        modal_feat1_title: "Interactive In-Game UI",
+        modal_feat1_desc: "Fully functional touchscreen interface rendered directly inside the game environment.",
+        modal_feat2_title: "Custom Apps",
+        modal_feat2_desc: "Built-in applications ranging from telemetry tools to media players and vehicle controls.",
+        modal_feat3_title: "Vehicle Integration",
+        modal_feat3_desc: "Seamlessly connects with BeamNG vehicles for real-time telemetry and remote features.",
+        modal_status: "Status: Currently in Alpha development phase.",
+        modal_close: "Close"
     },
     de: {
         nav_projects: "Projekte",
@@ -303,9 +428,19 @@ const translations = {
         hero_btn: "Projekte ansehen",
         proj_title: "Projekte",
         proj_evo_title: "Evo Phone",
-        proj_evo_desc: "Ein minimalistisches Smartphone-Konzept mit Fokus auf reduziertes UI/UX-Design und flüssige Interaktionen.",
+        proj_evo_desc: "Das Evo Phone ist ein vollständiges Smartphone-Mod in BeamNG.drive. Es befindet sich aktuell in der Alpha. Klicke für weitere Informationen.",
         contact_title: "Kontakt",
-        contact_desc: "Offen für neue Projekte und Anfragen. Schreib mir direkt per Mail oder Discord."
+        contact_desc: "Offen für neue Projekte und Anfragen. Schreib mir direkt per Mail oder Discord.",
+        modal_title: "Evo Phone (BeamNG.drive Mod)",
+        modal_subtitle: "Ausführliche Übersicht & Funktionen",
+        modal_feat1_title: "Interaktives In-Game-UI",
+        modal_feat1_desc: "Voll funktionsfähige Touchscreen-Oberfläche, die direkt in der Spielumgebung gerendert wird.",
+        modal_feat2_title: "Custom Apps",
+        modal_feat2_desc: "Integrierte Anwendungen von Telemetrie-Tools bis hin zu Media-Playern und Fahrzeugsteuerung.",
+        modal_feat3_title: "Fahrzeug-Integration",
+        modal_feat3_desc: "Nahtlose Verbindung mit BeamNG-Fahrzeugen für Echtzeit-Telemetrie und Fernbedienungsfunktionen.",
+        modal_status: "Status: Befindet sich aktuell in der Alpha-Entwicklungsphase.",
+        modal_close: "Schließen"
     },
     tr: {
         nav_projects: "Projeler",
@@ -315,9 +450,19 @@ const translations = {
         hero_btn: "Projeleri Gör",
         proj_title: "Projeler",
         proj_evo_title: "Evo Phone",
-        proj_evo_desc: "İndirgenmiş UI/UX tasarımı ve akıcı etkileşimlere odaklanan minimalist bir akıllı telefon konsepti.",
+        proj_evo_desc: "Evo Phone, BeamNG.drive için eksiksiz bir akıllı telefon modudur. Şu anda alfa aşamasındadır. Daha fazla bilgi için tıklayın.",
         contact_title: "İletişim",
-        contact_desc: "Yeni projeler ve sorular için açığım. E-posta veya Discord üzerinden doğrudan ulaşabilirsiniz."
+        contact_desc: "Yeni projeler ve sorular için açığım. E-posta veya Discord üzerinden doğrudan ulaşabilirsiniz.",
+        modal_title: "Evo Phone (BeamNG.drive Modu)",
+        modal_subtitle: "Detaylı Genel Bakış ve Özellikler",
+        modal_feat1_title: "İnteraktif Oyun İçi Arayüz",
+        modal_feat1_desc: "Doğrudan oyun ortamında render edilen tam işlevsel bir dokunmatik ekran arayüzü.",
+        modal_feat2_title: "Özel Uygulamalar",
+        modal_feat2_desc: "Telemetri araçlarından medya oynatıcılarına ve araç kontrollerine kadar yerleşik uygulamalar.",
+        modal_feat3_title: "Araç Entegrasyonu",
+        modal_feat3_desc: "Gerçek zamanlı telemetri ve uzaktan kumanda özellikleri için BeamNG araçlarıyla sorunsuz bağlantı kurar.",
+        modal_status: "Durum: Şu anda Alfa geliştirme aşamasındadır.",
+        modal_close: "Kapat"
     },
     ru: {
         nav_projects: "Проекты",
@@ -327,9 +472,19 @@ const translations = {
         hero_btn: "Смотреть проекты",
         proj_title: "Проекты",
         proj_evo_title: "Evo Phone",
-        proj_evo_desc: "Минималистичная концепция смартфона с акцентом на уменьшенный UI/UX дизайн и плавные взаимодействия.",
+        proj_evo_desc: "Evo Phone — это полноценный мод смартфона для BeamNG.drive. В настоящее время он находится на стадии альфа-тестирования. Нажмите для получения дополнительной информации.",
         contact_title: "Контакты",
-        contact_desc: "Открыт для новых проектов и вопросов. Свяжитесь со мной напрямую через почту или Discord."
+        contact_desc: "Открыт для новых проектов и вопросов. Свяжитесь со мной напрямую через почту или Discord.",
+        modal_title: "Evo Phone (Мод для BeamNG.drive)",
+        modal_subtitle: "Подробный обзор и функции",
+        modal_feat1_title: "Интерактивный интерфейс",
+        modal_feat1_desc: "Полнофункциональный сенсорный интерфейс, отображаемый прямо в игровой среде.",
+        modal_feat2_title: "Кастомные приложения",
+        modal_feat2_desc: "Встроенные приложения, от инструментов телеметрии до медиаплееров и управления автомобилем.",
+        modal_feat3_title: "Интеграция с транспортом",
+        modal_feat3_desc: "Бесшовная связь с автомобилями BeamNG для телеметрии в реальном времени и удаленных функций.",
+        modal_status: "Статус: На данный момент находится в альфа-версии разработки.",
+        modal_close: "Закрыть"
     },
     pt: {
         nav_projects: "Projetos",
@@ -339,9 +494,19 @@ const translations = {
         hero_btn: "Ver Projetos",
         proj_title: "Projetos",
         proj_evo_title: "Evo Phone",
-        proj_evo_desc: "Um conceito minimalista de smartphone focado em design de UI/UX reduzido e interações fluidas.",
+        proj_evo_desc: "O Evo Phone é um mod de smartphone completo no BeamNG.drive. Atualmente está em alfa. Clique para mais informações.",
         contact_title: "Contato",
-        contact_desc: "Aberto a novos projetos e dúvidas. Entre em contato diretamente via e-mail ou Discord."
+        contact_desc: "Aberto a novos projetos e dúvidas. Entre em contato diretamente via e-mail ou Discord.",
+        modal_title: "Evo Phone (Mod do BeamNG.drive)",
+        modal_subtitle: "Visão Geral Detalhada e Recursos",
+        modal_feat1_title: "Interface Interativa In-Game",
+        modal_feat1_desc: "Uma interface de tela sensível ao toque totalmente funcional renderizada diretamente no ambiente do jogo.",
+        modal_feat2_title: "Aplicativos Personalizados",
+        modal_feat2_desc: "Aplicativos integrados que vão desde ferramentas de telemetria até reprodutores de mídia e controles de veículos.",
+        modal_feat3_title: "Integração com Veículos",
+        modal_feat3_desc: "Conecta-se perfeitamente com veículos do BeamNG para telemetria em tempo real e recursos remotos.",
+        modal_status: "Status: Atualmente na fase de desenvolvimento Alfa.",
+        modal_close: "Fechar"
     }
 };
 
@@ -362,6 +527,24 @@ setLanguage(savedLang);
 
 document.getElementById('langSelect').addEventListener('change', function(e) {
     setLanguage(e.target.value);
+});
+
+const projectModal = document.getElementById('projectModal');
+const evoCard = document.getElementById('evoCard');
+const closeModalBtn = document.getElementById('closeModalBtn');
+
+evoCard.addEventListener('click', function() {
+    projectModal.classList.add('active');
+});
+
+closeModalBtn.addEventListener('click', function() {
+    projectModal.classList.remove('active');
+});
+
+projectModal.addEventListener('click', function(e) {
+    if (e.target === projectModal) {
+        projectModal.classList.remove('active');
+    }
 });
 
 const observer = new IntersectionObserver(function(entries, observerInstance) {
