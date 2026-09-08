@@ -86,16 +86,95 @@ nav {
 }
 
 header {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
+    text-align: center;
     max-width: 1000px;
     margin: 0 auto;
-    padding: 0 40px;
+    padding: 100px 40px 40px 40px;
 }
 
+/* --- LOGO & HALBKREIS-MENÜ STYLE --- */
+.logo-menu-container {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #333;
+    cursor: pointer;
+    z-index: 10;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.logo-menu-container:hover .logo-img {
+    transform: scale(1.05);
+    border-color: #fff;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.radial-menu {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+}
+
+.logo-menu-container:hover .radial-menu {
+    pointer-events: auto;
+}
+
+.menu-btn {
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    width: 40px;
+    height: 40px;
+    background: #161616;
+    border: 1px solid #333;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 600;
+    opacity: 0;
+    transform: translate(0, 0) scale(0.5);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease, background 0.2s ease, border-color 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+.menu-btn:hover {
+    background: #fff;
+    color: #0a0a0a;
+    border-color: #fff;
+    transform: scale(1.2) !important;
+}
+
+/* Fächert 5 Buttons in einem Bogen über dem Logo auf (-150° bis -30°) */
+.logo-menu-container:hover .menu-btn:nth-child(1) { opacity: 1; transform: rotate(-150deg) translate(100px) rotate(150deg) scale(1); }
+.logo-menu-container:hover .menu-btn:nth-child(2) { opacity: 1; transform: rotate(-120deg) translate(100px) rotate(120deg) scale(1); }
+.logo-menu-container:hover .menu-btn:nth-child(3) { opacity: 1; transform: rotate(-90deg) translate(100px) rotate(90deg) scale(1); }
+.logo-menu-container:hover .menu-btn:nth-child(4) { opacity: 1; transform: rotate(-60deg) translate(100px) rotate(60deg) scale(1); }
+.logo-menu-container:hover .menu-btn:nth-child(5) { opacity: 1; transform: rotate(-30deg) translate(100px) rotate(30deg) scale(1); }
+
+/* --- HERO TEXTE --- */
 header h1 {
     font-size: 4rem;
     font-weight: 700;
@@ -303,7 +382,7 @@ section {
         gap: 16px;
     }
     header {
-        padding: 0 20px;
+        padding: 120px 20px 40px 20px;
     }
     header h1 {
         font-size: 3rem;
@@ -331,7 +410,7 @@ section {
             <a href="#projects" data-i18n="nav_projects">Projects</a>
             <a href="#contact" data-i18n="nav_contact">Contact</a>
         </div>
-        <select class="lang-select" id="langSelect">
+        <select class="lang-select" id="langSelect" aria-label="Select Language">
             <option value="en">EN</option>
             <option value="de">DE</option>
             <option value="tr">TR</option>
@@ -342,6 +421,17 @@ section {
 </nav>
 
 <header>
+    <div class="logo-menu-container fade-in">
+        <img src="PhnomTR.png" alt="PhnomTR Logo" class="logo-img">
+        <div class="radial-menu">
+            <a href="#projects" class="menu-btn" title="Projects">📁</a>
+            <a href="#contact" class="menu-btn" title="Contact">✉️</a>
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="menu-btn" title="GitHub">💻</a>
+            <a href="https://discord.gg/rr3xjzkUbM" target="_blank" rel="noopener noreferrer" class="menu-btn" title="Discord">💬</a>
+            <a href="#evoCard" class="menu-btn" title="Evo Phone">📱</a>
+        </div>
+    </div>
+
     <h1 class="fade-in" data-i18n="hero_title">PhnomTR</h1>
     <p class="hero-slogan fade-in" data-i18n="hero_slogan">Engineering Digital Realities</p>
     <a href="#projects" class="btn fade-in" data-i18n="hero_btn">View Projects</a>
@@ -352,7 +442,7 @@ section {
     <div class="card-container">
         <div class="card fade-in" id="evoCard">
             <h3 data-i18n="proj_evo_title">Evo Phone</h3>
-            <p data-i18n="proj_evo_desc">Das Evo Phone ist ein vollständiges Smartphone-Mod in BeamNG.drive. Es befindet sich aktuell in der Alpha. Klicke für weitere Informationen.</p>
+            <p data-i18n="proj_evo_desc">The Evo Phone is a complete smartphone mod in BeamNG.drive. It is currently in alpha. Click for more information.</p>
         </div>
     </div>
 </section>
@@ -363,8 +453,8 @@ section {
         <p style="color: #888; font-size: 0.95rem;" data-i18n="contact_desc">Open for new projects and inquiries. Reach out directly via mail or Discord.</p>
         <p style="color: #fff; font-size: 0.95rem; margin-top: 16px;">phnomtr@gmail.com</p>
         <div class="contact-links">
-            <a href="https://discord.gg/rr3xjzkUbM" target="_blank" class="contact-link">Discord</a>
-            <a href="https://github.com" target="_blank" class="contact-link">GitHub</a>
+            <a href="https://discord.gg/rr3xjzkUbM" target="_blank" rel="noopener noreferrer" class="contact-link">Discord</a>
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="contact-link">GitHub</a>
         </div>
     </div>
 </section>
@@ -481,8 +571,6 @@ const translations = {
         modal_feat1_desc: "Полнофункциональный сенсорный интерфейс, отображаемый прямо в игровой среде.",
         modal_feat2_title: "Кастомные приложения",
         modal_feat2_desc: "Встроенные приложения, от инструментов телеметрии до медиаплееров и управления автомобилем.",
-        modal_feat3_title: "Интеграция с транспортом",
-        modal_feat3_desc: "Бесшовная связь с автомобилями BeamNG для телеметрии в реальном времени и удаленных функций.",
         modal_status: "Статус: На данный момент находится в альфа-версии разработки.",
         modal_close: "Закрыть"
     },
