@@ -36,8 +36,14 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 40px;
+    padding: 12px 40px;
     z-index: 1000;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 32px;
 }
 
 .logo {
@@ -45,12 +51,6 @@ nav {
     font-size: 1rem;
     color: #fff;
     letter-spacing: -0.01em;
-}
-
-.nav-right {
-    display: flex;
-    align-items: center;
-    gap: 32px;
 }
 
 .nav-links {
@@ -69,6 +69,12 @@ nav {
     color: #fff;
 }
 
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
 .lang-select {
     background: #121212;
     color: #ededed;
@@ -85,44 +91,40 @@ nav {
     border-color: #525252;
 }
 
-header {
-    min-height: 100vh;
+/* --- LOGO IM HEADER (Ganz oben in der Mitte) --- */
+.nav-center-logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 100px 40px 40px 40px;
 }
 
-/* --- LOGO & HALBKREIS-MENÜ STYLE --- */
 .logo-menu-container {
     position: relative;
-    width: 140px;
-    height: 140px;
-    margin-bottom: 40px;
+    width: 46px;
+    height: 46px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .logo-img {
-    width: 120px;
-    height: 120px;
+    width: 42px;
+    height: 42px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid #333;
+    border: 1px solid #333;
     cursor: pointer;
     z-index: 10;
     transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .logo-menu-container:hover .logo-img {
-    transform: scale(1.05);
+    transform: scale(1.1);
     border-color: #fff;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.2);
 }
 
 .radial-menu {
@@ -140,10 +142,10 @@ header {
 
 .menu-btn {
     position: absolute;
-    top: -20px;
-    left: -20px;
-    width: 40px;
-    height: 40px;
+    top: -18px;
+    left: -18px;
+    width: 36px;
+    height: 36px;
     background: #161616;
     border: 1px solid #333;
     color: #fff;
@@ -153,10 +155,9 @@ header {
     align-items: center;
     text-decoration: none;
     font-size: 0.8rem;
-    font-weight: 600;
     opacity: 0;
     transform: translate(0, 0) scale(0.5);
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease, background 0.2s ease, border-color 0.2s ease;
+    transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.25s ease, background 0.2s ease, border-color 0.2s ease;
     box-shadow: 0 4px 12px rgba(0,0,0,0.5);
 }
 
@@ -167,14 +168,25 @@ header {
     transform: scale(1.2) !important;
 }
 
-/* Fächert 5 Buttons in einem Bogen über dem Logo auf (-150° bis -30°) */
-.logo-menu-container:hover .menu-btn:nth-child(1) { opacity: 1; transform: rotate(-150deg) translate(100px) rotate(150deg) scale(1); }
-.logo-menu-container:hover .menu-btn:nth-child(2) { opacity: 1; transform: rotate(-120deg) translate(100px) rotate(120deg) scale(1); }
-.logo-menu-container:hover .menu-btn:nth-child(3) { opacity: 1; transform: rotate(-90deg) translate(100px) rotate(90deg) scale(1); }
-.logo-menu-container:hover .menu-btn:nth-child(4) { opacity: 1; transform: rotate(-60deg) translate(100px) rotate(60deg) scale(1); }
-.logo-menu-container:hover .menu-btn:nth-child(5) { opacity: 1; transform: rotate(-30deg) translate(100px) rotate(30deg) scale(1); }
+/* Fächert 5 Buttons nach unten unter dem Logo auf (30° bis 150°) */
+.logo-menu-container:hover .menu-btn:nth-child(1) { opacity: 1; transform: rotate(30deg) translate(65px) rotate(-30deg) scale(1); }
+.logo-menu-container:hover .menu-btn:nth-child(2) { opacity: 1; transform: rotate(60deg) translate(65px) rotate(-60deg) scale(1); }
+.logo-menu-container:hover .menu-btn:nth-child(3) { opacity: 1; transform: rotate(90deg) translate(65px) rotate(-90deg) scale(1); }
+.logo-menu-container:hover .menu-btn:nth-child(4) { opacity: 1; transform: rotate(120deg) translate(65px) rotate(-120deg) scale(1); }
+.logo-menu-container:hover .menu-btn:nth-child(5) { opacity: 1; transform: rotate(150deg) translate(65px) rotate(-150deg) scale(1); }
 
 /* --- HERO TEXTE --- */
+header {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
 header h1 {
     font-size: 4rem;
     font-weight: 700;
@@ -373,16 +385,16 @@ section {
 
 @media (max-width: 768px) {
     nav {
-        padding: 20px;
+        padding: 12px 20px;
     }
-    .nav-right {
+    .nav-left {
         gap: 16px;
     }
     .nav-links {
         gap: 16px;
     }
     header {
-        padding: 120px 20px 40px 20px;
+        padding: 0 20px;
     }
     header h1 {
         font-size: 3rem;
@@ -404,12 +416,29 @@ section {
 <body>
 
 <nav>
-    <div class="logo">PhnomTR</div>
-    <div class="nav-right">
+    <div class="nav-left">
+        <div class="logo">PhnomTR</div>
         <div class="nav-links">
             <a href="#projects" data-i18n="nav_projects">Projects</a>
             <a href="#contact" data-i18n="nav_contact">Contact</a>
         </div>
+    </div>
+
+    <!-- WAPPEN IN DER MITTE DER NAVIGATION -->
+    <div class="nav-center-logo">
+        <div class="logo-menu-container">
+            <img src="PhnomTR.png" alt="PhnomTR Logo" class="logo-img">
+            <div class="radial-menu">
+                <a href="#projects" class="menu-btn" title="Projects">📁</a>
+                <a href="#contact" class="menu-btn" title="Contact">✉️</a>
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="menu-btn" title="GitHub">💻</a>
+                <a href="https://discord.gg/rr3xjzkUbM" target="_blank" rel="noopener noreferrer" class="menu-btn" title="Discord">💬</a>
+                <a href="#evoCard" class="menu-btn" title="Evo Phone">📱</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="nav-right">
         <select class="lang-select" id="langSelect" aria-label="Select Language">
             <option value="en">EN</option>
             <option value="de">DE</option>
@@ -421,17 +450,6 @@ section {
 </nav>
 
 <header>
-    <div class="logo-menu-container fade-in">
-        <img src="PhnomTR.png" alt="PhnomTR Logo" class="logo-img">
-        <div class="radial-menu">
-            <a href="#projects" class="menu-btn" title="Projects">📁</a>
-            <a href="#contact" class="menu-btn" title="Contact">✉️</a>
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="menu-btn" title="GitHub">💻</a>
-            <a href="https://discord.gg/rr3xjzkUbM" target="_blank" rel="noopener noreferrer" class="menu-btn" title="Discord">💬</a>
-            <a href="#evoCard" class="menu-btn" title="Evo Phone">📱</a>
-        </div>
-    </div>
-
     <h1 class="fade-in" data-i18n="hero_title">PhnomTR</h1>
     <p class="hero-slogan fade-in" data-i18n="hero_slogan">Engineering Digital Realities</p>
     <a href="#projects" class="btn fade-in" data-i18n="hero_btn">View Projects</a>
