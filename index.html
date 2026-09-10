@@ -8,6 +8,11 @@
 <style>
 html {
     scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
+::-webkit-scrollbar {
+    display: none;
 }
 
 * {
@@ -91,25 +96,24 @@ nav {
     border-color: #525252;
 }
 
-/* --- LOGO IM HEADER --- */
 .nav-center-logo {
     position: absolute;
     left: 50%;
-    transform: translateX(-50%);
+    top: 50%;
+    transform: translate(-50%, -50%);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* Erhöhter Radius & Padding damit Hover beim Drüberfahren nicht abbricht */
 .logo-menu-container {
     position: relative;
-    width: 160px;
-    height: 110px;
+    width: 180px;
+    height: 120px;
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding-top: 5px;
+    padding-top: 12px;
 }
 
 .logo-img {
@@ -131,7 +135,7 @@ nav {
 
 .radial-menu {
     position: absolute;
-    top: 27px;
+    top: 34px;
     left: 50%;
     width: 0;
     height: 0;
@@ -157,8 +161,8 @@ nav {
     align-items: center;
     text-decoration: none;
     opacity: 0;
-    transform: translate(0, 0) scale(0.5);
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s ease, background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    transform: translate(0, 0) scale(0.3);
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease, background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
     box-shadow: 0 4px 16px rgba(0,0,0,0.6);
 }
 
@@ -173,17 +177,20 @@ nav {
     background: #fff;
     color: #0a0a0a;
     border-color: #fff;
-    transform: scale(1.15) !important;
 }
 
-/* 5 Buttons bogenförmig nach unten ausgefächert */
-.logo-menu-container:hover .menu-btn:nth-child(1) { opacity: 1; transform: rotate(35deg) translate(62px) rotate(-35deg) scale(1); }
-.logo-menu-container:hover .menu-btn:nth-child(2) { opacity: 1; transform: rotate(62deg) translate(62px) rotate(-62deg) scale(1); }
-.logo-menu-container:hover .menu-btn:nth-child(3) { opacity: 1; transform: rotate(90deg) translate(62px) rotate(-90deg) scale(1); }
-.logo-menu-container:hover .menu-btn:nth-child(4) { opacity: 1; transform: rotate(118deg) translate(62px) rotate(-118deg) scale(1); }
-.logo-menu-container:hover .menu-btn:nth-child(5) { opacity: 1; transform: rotate(145deg) translate(62px) rotate(-145deg) scale(1); }
+.logo-menu-container:hover .menu-btn:nth-child(1) { opacity: 1; transform: rotate(35deg) translate(60px) rotate(-35deg) scale(1); transition-delay: 0s; }
+.logo-menu-container:hover .menu-btn:nth-child(2) { opacity: 1; transform: rotate(62deg) translate(60px) rotate(-62deg) scale(1); transition-delay: 0.04s; }
+.logo-menu-container:hover .menu-btn:nth-child(3) { opacity: 1; transform: rotate(90deg) translate(60px) rotate(-90deg) scale(1); transition-delay: 0.08s; }
+.logo-menu-container:hover .menu-btn:nth-child(4) { opacity: 1; transform: rotate(118deg) translate(60px) rotate(-118deg) scale(1); transition-delay: 0.12s; }
+.logo-menu-container:hover .menu-btn:nth-child(5) { opacity: 1; transform: rotate(145deg) translate(60px) rotate(-145deg) scale(1); transition-delay: 0.16s; }
 
-/* --- HERO SECTION --- */
+.logo-menu-container:hover .menu-btn:nth-child(1):hover { transform: rotate(35deg) translate(60px) rotate(-35deg) scale(1.15); }
+.logo-menu-container:hover .menu-btn:nth-child(2):hover { transform: rotate(62deg) translate(60px) rotate(-62deg) scale(1.15); }
+.logo-menu-container:hover .menu-btn:nth-child(3):hover { transform: rotate(90deg) translate(60px) rotate(-90deg) scale(1.15); }
+.logo-menu-container:hover .menu-btn:nth-child(4):hover { transform: rotate(118deg) translate(60px) rotate(-118deg) scale(1.15); }
+.logo-menu-container:hover .menu-btn:nth-child(5):hover { transform: rotate(145deg) translate(60px) rotate(-145deg) scale(1.15); }
+
 header {
     height: 100vh;
     display: flex;
@@ -417,23 +424,18 @@ section {
         <div class="logo-menu-container">
             <img src="PhnomTR.png" alt="PhnomTR Logo" class="logo-img">
             <div class="radial-menu">
-                <!-- Ordner -->
                 <a href="#projects" class="menu-btn" title="Projects">
                     <svg viewBox="0 0 24 24"><path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg>
                 </a>
-                <!-- Mail -->
                 <a href="#contact" class="menu-btn" title="Contact">
                     <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
                 </a>
-                <!-- Code / GitHub -->
                 <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="menu-btn" title="GitHub">
                     <svg viewBox="0 0 24 24"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>
                 </a>
-                <!-- Discord / Chat -->
                 <a href="https://discord.gg/rr3xjzkUbM" target="_blank" rel="noopener noreferrer" class="menu-btn" title="Discord">
                     <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
                 </a>
-                <!-- Smartphone / Evo Phone -->
                 <a href="#evoCard" class="menu-btn" title="Evo Phone">
                     <svg viewBox="0 0 24 24"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
                 </a>
